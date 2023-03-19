@@ -24,14 +24,6 @@ const initialState = {
       publishedDate: '19-03-2022',
       author: 'Jonathan'
     },
-    {
-      id: '4',
-      title: 'Bankruptcy',
-      shortDescription: 'Another Bankruptcy',
-      content: 'Main content of the article.........................',
-      publishedDate: '20-03-2022',
-      author: 'Jonathan'
-    }
   ],
 }
 
