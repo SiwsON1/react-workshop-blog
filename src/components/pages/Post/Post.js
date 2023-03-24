@@ -1,6 +1,5 @@
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
-import { Container } from 'react-bootstrap';
 import styles from './Post.module.scss';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -20,7 +19,7 @@ else return (
     <div className={styles.header}>
     <h2>{postData.title}</h2>
     <div className={styles.buttons}>
-    <Link to='/post/add'>
+    <Link to={`/post/edit/${id}/`}>
       <Button variant="outline-info">Edit</Button>
       </Link>
       <ModalPrimary id={id}/>

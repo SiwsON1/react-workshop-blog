@@ -1,7 +1,14 @@
+import EditPostForm from "../../features/EditPostForm/EditPostForm";
+import styles from './PostEddit.module.scss';
+
 const PostEdit = () => {
+  
   return (
     
-     <h1>PostEdit</h1>
+    <section className ={styles.postForm}>
+    <h1>Edit Post</h1>
+     <EditPostForm />
+    </section>
       
     
   );
