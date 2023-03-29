@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { getPostById } from '../../../redux/postsRedux';
 import ModalPrimary from '../../common/modal/modal';
 import { Navigate } from 'react-router-dom';
+import dateToStr from '../../../utils/dateToStr';
 
 const Post = () => {
   const { id } = useParams();
@@ -26,8 +27,8 @@ else return (
     </div>
     </div>
     <h4 className="mb-2">Author: <span className="fw-light">{postData.author}</span></h4>
-    <h4 className="mb-2 ">Published: <span className="fw-light">{postData.publishedDate}</span></h4>
-    <p className="mt-4 ">{postData.content}</p>
+    <h4 className="mb-2 ">Published: <span className="fw-light">{dateToStr(postData.publishedDate)}</span></h4>
+    <p className="mt-4 "dangerouslySetInnerHTML={{ __html: postData.content }} />
     </section>
       
     

@@ -22,6 +22,7 @@ const EditPostForm = () => {
     dispatch(editPost({ ...post, id }));
     navigate('/')
 };
+
 if(!postData) return <Navigate to="/" />
 else return (
 
