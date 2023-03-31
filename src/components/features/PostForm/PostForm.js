@@ -5,17 +5,22 @@ import { Form } from 'react-bootstrap';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useForm } from "react-hook-form";
-
+import { useSelector } from 'react-redux';
+import { getAllCategories } from '../../../redux/categoriesRedux';
 
 const PostForm = ({ action, actionText, ...props }) => {
 
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
+
+  const categories = useSelector(getAllCategories);
+  console.log(categories);
 
   const [title, setTitle] = useState(props.title || '');
   const [author, setAuthor] = useState(props.author || '');
   const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
   const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
   const [content, setContent] = useState(props.content || '');
+  const [category, setCategory] = useState(props.category || '');
   const [contentError, setContentError] = useState(false);
   const [dateError, setDateError] = useState(false);
 
@@ -26,7 +31,6 @@ const PostForm = ({ action, actionText, ...props }) => {
       action({ title, author, publishedDate, shortDescription, content });
    }
   }
-
  
 
 return (
@@ -46,6 +50,16 @@ return (
     <Form.Control type="date" placeholder="Enter date" value={publishedDate} onChange={e => setPublishedDate(e.target.value)} />
     {dateError && <small className="d-block form-text text-danger mt-2">Wrong date format</small>}
   </Form.Group>
+  <Form.Group className="mb-3" controlId="exampleForm.ControlSelect1">
+  <Form.Label>Category</Form.Label>
+  <Form.Control {...register("category", { required: true })} as="select" value={category} onChange={e => setCategory(e.target.value)}>
+    <option value="">Select category</option>
+    {categories.map(category => (
+    <option key={category} value={category}>{category}</option>
+  ))}
+  </Form.Control>
+  {errors.category && <small className="d-block form-text text-danger mt-2">Please select a category</small>}
+</Form.Group>
   <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
     <Form.Label>Short description</Form.Label>
     <Form.Control {...register("shortDescription", { required: true, minLength: 21 })} as="textarea" rows={3} placeholder="Leave a comment here" value={shortDescription} onChange={e => setShortDescription(e.target.value)} />

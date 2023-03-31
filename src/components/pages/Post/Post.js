@@ -12,6 +12,7 @@ const Post = () => {
   const { id } = useParams();
 
   const postData = useSelector(state => getPostById(state, id));
+  
 
   if(!postData) return <Navigate to="/" />
 else return (
@@ -28,6 +29,7 @@ else return (
     </div>
     <h4 className="mb-2">Author: <span className="fw-light">{postData.author}</span></h4>
     <h4 className="mb-2 ">Published: <span className="fw-light">{dateToStr(postData.publishedDate)}</span></h4>
+    <h4 className="mb-2">Category: <span className="fw-light">{postData.category}</span></h4>
     <p className="mt-4 "dangerouslySetInnerHTML={{ __html: postData.content }} />
     </section>
       

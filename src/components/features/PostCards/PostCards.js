@@ -5,10 +5,13 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './PostCards.module.scss';
 import dateToStr from '../../../utils/dateToStr';
+import { getAllCategories } from '../../../redux/categoriesRedux';
 
 const PostCards = () => {
 
   const posts = useSelector(getAllPosts);
+  console.log(posts);
+
 
   return (
     <section className={styles.cards} >
@@ -17,8 +20,9 @@ const PostCards = () => {
     <Card key={post.id} className={styles.card}>
       <Card.Body>
         <Card.Title>{post.title}</Card.Title>
-        <Card.Subtitle className="mb-2">Author: {post.author}</Card.Subtitle>
+        <Card.Subtitle className="mb-2">Author: <span className="fw-light">{post.author}</span></Card.Subtitle>
         <Card.Subtitle className="mb-2 ">Published: <span className="fw-light">{dateToStr(post.publishedDate)}</span></Card.Subtitle>
+        <Card.Subtitle className="mb-2">Category: <span className="fw-light">{post.category}</span></Card.Subtitle>
         <Card.Text>
           {post.shortDescription}
         </Card.Text>

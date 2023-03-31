@@ -13,6 +13,7 @@ const NavBar = () => {
         <Nav className="d-flex justify-content-end">
           <Nav.Link as={NavLink} to="/">Home</Nav.Link>
           <Nav.Link as={NavLink} to="/about">About</Nav.Link>
+          <Nav.Link as={NavLink} to="/categories">Categories</Nav.Link>
         </Nav>
     </Container>
   </Navbar>
