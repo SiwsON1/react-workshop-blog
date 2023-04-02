@@ -1,16 +1,19 @@
 import PostCards from "../../features/PostCards/PostCards";
+import { Row } from "react-bootstrap";
+import Container from 'react-bootstrap/Container';
+import { useParams } from "react-router-dom";
 
 const CategoriesPost = () => {
+
+  const { category } = useParams();
+
   return (
     <Container>
-      <div className={styles.header}>
-      <h1>All Posts</h1>
-      <Link to='/post/add'>
-        <Button variant="outline-info">Add post</Button>
-        </Link>
+      <div>
+      <h1>Category</h1>  
       </div>
-      <Row className={styles.cardContainer}>
-        <PostCards />
+      <Row >
+        <PostCards isInCategory category={category}/>
       </Row>
     </Container>
   );

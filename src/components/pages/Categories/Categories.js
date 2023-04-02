@@ -16,7 +16,7 @@ const Categories= () => {
     {categories.map(category => (
         <ListGroup>
         <ListGroup.Item>
-          <Link key={category} to={`/category/${category}`} >
+          <Link key={category} to={`/categories/${category}`} >
             <h3>{category}</h3>
           </Link>
         </ListGroup.Item>

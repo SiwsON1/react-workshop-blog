@@ -1,16 +1,30 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { getAllPosts } from '../../../redux/postsRedux';
+import { getAllPosts, getPostByCategory } from '../../../redux/postsRedux';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './PostCards.module.scss';
 import dateToStr from '../../../utils/dateToStr';
-import { getAllCategories } from '../../../redux/categoriesRedux';
 
-const PostCards = () => {
 
-  const posts = useSelector(getAllPosts);
-  console.log(posts);
+
+function usePosts(category, isInCategory) {
+      let selector;
+
+    if (isInCategory) {
+      selector = getPostByCategory;
+    } else {
+      selector = getAllPosts;
+    }
+  const posts = useSelector(state => selector(state, category));
+  return posts;
+}
+
+const PostCards = ({category, isInCategory}) => {
+  
+  const posts = usePosts(category, isInCategory);
+
+ 
 
 
   return (
